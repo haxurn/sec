@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# Except lessons folder
+!lessons/
+!lessons/**
+
+# Labs (exclude node_modules and database)
+!labs/
+!labs/**
+
+# Ignore node_modules in labs
+labs/**/node_modules/
+labs/**/grade_system.db
+labs/**/package-lock.json
