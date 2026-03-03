@@ -1,15 +1,55 @@
-# Ignore everything
+# Ignore everything by default
 *
+*/
 
-# Except lessons folder
+# Allow specific files and folders
+!.gitignore
+!README.md
 !lessons/
 !lessons/**
-
-# Labs (exclude node_modules and database)
 !labs/
 !labs/**
+!notes/
+!notes/**
+!labs/**
+!notes/**
 
-# Ignore node_modules in labs
-labs/**/node_modules/
-labs/**/grade_system.db
-labs/**/package-lock.json
+# Ignore large files
+*.apk
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.bin
+*.exe
+*.dll
+*.so
+*.iso
+*.img
+
+# Ignore databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Ignore logs
+*.log
+
+# Ignore node modules if any
+node_modules/
+
+# Ignore build outputs
+build/
+dist/
+out/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
