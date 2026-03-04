@@ -2,7 +2,7 @@
 
 This lab demonstrates OWASP Top 10 #1 vulnerability: Broken Access Control using a Grade Management System.
 
-> **Related Lesson:** See [`lessons/owasp-top-10/broken-access-control.md`](../../lessons/owasp-top-10/broken-access-control.md) for the complete theoretical guide.
+> **Related Lesson:** See [`/lessons/owasp-top-10/broken-access-control.md`](/lessons/owasp-top-10/broken-access-control.md) for the complete theoretical guide.
 
 ## Lab Overview
 
