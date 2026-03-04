@@ -464,6 +464,29 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
   <script>
     (function() {
+      function getDocsBase() {
+        var path = (location.pathname || '/').replace(/\/+$/, '');
+        var match = path.match(/^(.*\/sec)(\/|$)/);
+        return match ? match[1] : '';
+      }
+
+      function rewritePlannerLinks() {
+        var base = getDocsBase();
+        var mainHref = (base || '') + '/notes/mobile-pentest-plan.html';
+        var fallbackHref = (base || '') + '/mobile-pentest-plan.html';
+        document.querySelectorAll('a[data-planner-link="main"]').forEach(function(a) {
+          a.setAttribute('href', mainHref);
+        });
+        document.querySelectorAll('a[data-planner-link="fallback"]').forEach(function(a) {
+          a.setAttribute('href', fallbackHref);
+        });
+      }
+
+      function schedulePlannerRewrite() {
+        setTimeout(rewritePlannerLinks, 0);
+        setTimeout(rewritePlannerLinks, 200);
+      }
+
       function applyRouteClass() {
         var h = (location.hash || '').toLowerCase();
         var isMobilePentest = h.indexOf('notes/mobile-pentest') !== -1;
@@ -471,13 +494,16 @@
       }
 
       applyRouteClass();
+      schedulePlannerRewrite();
       window.addEventListener('hashchange', applyRouteClass);
+      window.addEventListener('hashchange', schedulePlannerRewrite);
 
       document.addEventListener('DOMContentLoaded', function() {
         if (window.lucide) {
           lucide.createIcons();
         }
         applyRouteClass();
+        schedulePlannerRewrite();
       });
     })();
   </script>
