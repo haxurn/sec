@@ -1,0 +1,17 @@
+# Code Owners
+
+# Default owner for everything
+* @haxurn
+
+# Docs
+/docs/ @haxurn
+
+# Labs
+/labs/ @haxurn
+
+# Lessons
+/lessons/ @haxurn
+
+# Tools and scripts
+/tools/ @haxurn
+/scripts/ @haxurn
