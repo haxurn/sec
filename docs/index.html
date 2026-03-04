@@ -7,6 +7,7 @@
   <meta name="description" content="Cybersecurity learning documentation">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
   <style>
     :root {
       --bg: #080b10;
@@ -28,14 +29,16 @@
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     
     body {
-      font-family: 'JetBrains Mono', monospace;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'JetBrains Mono', monospace !important;
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      font-size: 14px;
+      line-height: 1.6;
     }
     
-    /* Scanline overlay */
     body::before {
       content: '';
       position: fixed;
@@ -45,7 +48,6 @@
       z-index: 9999;
     }
     
-    /* Dot grid */
     body::after {
       content: '';
       position: fixed;
@@ -56,71 +58,314 @@
       z-index: 0;
     }
     
-    .sidebar { background: var(--s1) !important; border-right: 1px solid var(--border) !important; }
-    .sidebar-nav li { color: var(--text2) !important; }
-    .sidebar-nav li.active, .sidebar-nav li:hover { color: var(--cyan) !important; }
-    .sidebar-nav li.active { border-left: 2px solid var(--cyan); background: rgba(0,212,255,0.06); }
-    .sidebar > h1 { font-family: 'Syne', sans-serif; color: var(--white) !important; }
-    .sidebar > h1 .app-name-link { color: var(--cyan) !important; }
-    
-    .content { background: var(--bg); }
-    .markdown-section { color: var(--text); }
-    .markdown-section h1, .markdown-section h2, .markdown-section h3 { 
-      font-family: 'Syne', sans-serif; 
-      color: var(--white) !important; 
-      font-weight: 800;
-    }
-    .markdown-section h1 { font-size: 2.5em; }
-    .markdown-section h2 { font-size: 1.8em; border-bottom: 1px solid var(--border); padding-bottom: 0.5em; }
-    .markdown-section a { color: var(--cyan); }
-    .markdown-section a:hover { color: var(--green); }
-    .markdown-section code { 
-      background: var(--s2); 
-      color: var(--green); 
-      padding: 2px 6px; 
-      border-radius: 3px;
-      border: 1px solid var(--border);
-    }
-    .markdown-section pre { 
-      background: #060a0e !important; 
-      border: 1px solid var(--border); 
-      border-radius: 6px;
-    }
-    .markdown-section pre code { 
-      background: transparent; 
-      border: none; 
-      color: #c8e0f0;
-    }
-    .markdown-section blockquote { 
-      background: rgba(0,212,255,0.04); 
-      border-left: 3px solid var(--cyan); 
-      color: var(--text2);
-    }
-    .markdown-section table { border: 1px solid var(--border); }
-    .markdown-section th { background: var(--s1); color: var(--text3); border: 1px solid var(--border); }
-    .markdown-section td { border: 1px solid var(--border); }
-    .markdown-section tr:hover { background: rgba(255,255,255,0.015); }
-    
-    .docsify-copy-code-button { 
-      background: var(--s3) !important; 
-      color: var(--text3) !important;
-      border: 1px solid var(--border);
-    }
-    .docsify-copy-code-button:hover { color: var(--cyan) !important; }
-    
-    .search input { 
-      background: var(--s2) !important; 
-      border: 1px solid var(--border) !important; 
+    .sidebar {
+      background: var(--s1) !important;
+      border-right: 1px solid var(--border) !important;
       color: var(--text) !important;
     }
-    .search input:focus { border-color: var(--cyan) !important; }
-    .matching-post { border-bottom: 1px solid var(--border); }
-    .search .results-panel { background: var(--s1); border: 1px solid var(--border); }
-    .search .results-panel a { color: var(--text); }
-    .search .results-panel a:hover { color: var(--cyan); }
     
-    .pagination-item-label { color: var(--text3); }
-    .pagination-item-label:hover { color: var(--cyan); }
+    .sidebar > h1 {
+      font-family: 'Syne', sans-serif !important;
+      color: var(--white) !important;
+      font-weight: 800 !important;
+      margin: 0 !important;
+      padding: 24px 20px 16px !important;
+      border-bottom: 1px solid var(--border);
+      font-size: 17px !important;
+    }
+    
+    .sidebar > h1 a {
+      color: var(--white) !important;
+      text-decoration: none !important;
+    }
+    
+    .sidebar-nav {
+      padding: 8px 0 !important;
+    }
+    
+    .sidebar-nav ul {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    .sidebar-nav li {
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    .sidebar-nav > ul > li > strong {
+      color: var(--text3) !important;
+      font-size: 9px !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase !important;
+      display: block !important;
+      padding: 9px 20px !important;
+      margin-bottom: 4px !important;
+    }
+    
+    .sidebar-nav a {
+      color: var(--text2) !important;
+      text-decoration: none !important;
+      display: block !important;
+      padding: 8px 20px !important;
+      font-size: 12px !important;
+      border-left: 2px solid transparent !important;
+      transition: all 0.15s !important;
+    }
+    
+    .sidebar-nav a:hover {
+      color: var(--white) !important;
+      background: var(--s2) !important;
+      border-left-color: var(--border2) !important;
+    }
+    
+    .sidebar-nav li.active > a {
+      color: var(--cyan) !important;
+      background: rgba(0,212,255,0.06) !important;
+      border-left-color: var(--cyan) !important;
+      font-weight: 600 !important;
+    }
+    
+    .sidebar-nav ul ul a {
+      padding-left: 40px !important;
+      font-size: 11px !important;
+    }
+    
+    .content {
+      background: var(--bg) !important;
+      padding-top: 0 !important;
+    }
+    
+    .markdown-section {
+      color: var(--text) !important;
+      max-width: 900px !important;
+      padding: 40px 48px !important;
+    }
+    
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3,
+    .markdown-section h4 {
+      font-family: 'Syne', sans-serif !important;
+      color: var(--white) !important;
+      font-weight: 800 !important;
+      margin-top: 2em !important;
+      margin-bottom: 1em !important;
+    }
+    
+    .markdown-section h1 {
+      font-size: clamp(32px, 4vw, 52px) !important;
+      line-height: 1.1 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0.5em !important;
+    }
+    
+    .markdown-section h2 {
+      font-size: 1.8em !important;
+      border-bottom: 1px solid var(--border) !important;
+      padding-bottom: 0.5em !important;
+    }
+    
+    .markdown-section h3 {
+      font-size: 1.4em !important;
+      color: var(--cyan) !important;
+    }
+    
+    .markdown-section p {
+      line-height: 1.7 !important;
+      margin: 1em 0 !important;
+    }
+    
+    .markdown-section a {
+      color: var(--cyan) !important;
+      text-decoration: none !important;
+      border-bottom: 1px solid transparent !important;
+      transition: all 0.2s !important;
+    }
+    
+    .markdown-section a:hover {
+      color: var(--green) !important;
+      border-bottom-color: var(--green) !important;
+    }
+    
+    .markdown-section code {
+      background: var(--s2) !important;
+      color: var(--green) !important;
+      padding: 2px 8px !important;
+      border-radius: 3px !important;
+      border: 1px solid var(--border) !important;
+      font-size: 0.9em !important;
+    }
+    
+    .markdown-section pre {
+      background: #060a0e !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 6px !important;
+      padding: 16px !important;
+      margin: 1.5em 0 !important;
+      overflow-x: auto !important;
+    }
+    
+    .markdown-section pre code {
+      background: transparent !important;
+      border: none !important;
+      color: #c8e0f0 !important;
+      padding: 0 !important;
+      font-size: 0.85em !important;
+      line-height: 1.7 !important;
+    }
+    
+    .markdown-section blockquote {
+      background: rgba(0,212,255,0.04) !important;
+      border-left: 3px solid var(--cyan) !important;
+      color: var(--text2) !important;
+      padding: 12px 20px !important;
+      margin: 1.5em 0 !important;
+      border-radius: 0 4px 4px 0 !important;
+    }
+    
+    .markdown-section table {
+      border: 1px solid var(--border) !important;
+      border-collapse: collapse !important;
+      width: 100% !important;
+      margin: 1.5em 0 !important;
+      font-size: 0.9em !important;
+    }
+    
+    .markdown-section th {
+      background: var(--s1) !important;
+      color: var(--text3) !important;
+      border: 1px solid var(--border) !important;
+      padding: 10px 14px !important;
+      text-align: left !important;
+      font-weight: 600 !important;
+      letter-spacing: 1px !important;
+      text-transform: uppercase !important;
+      font-size: 0.85em !important;
+    }
+    
+    .markdown-section td {
+      border: 1px solid var(--border) !important;
+      padding: 10px 14px !important;
+    }
+    
+    .markdown-section tr:hover {
+      background: rgba(255,255,255,0.015) !important;
+    }
+    
+    .markdown-section ul,
+    .markdown-section ol {
+      padding-left: 1.5em !important;
+      margin: 1em 0 !important;
+    }
+    
+    .markdown-section li {
+      margin: 0.5em 0 !important;
+      line-height: 1.7 !important;
+    }
+    
+    .markdown-section hr {
+      border: none !important;
+      border-top: 1px solid var(--border) !important;
+      margin: 3em 0 !important;
+    }
+    
+    .docsify-copy-code-button {
+      background: var(--s3) !important;
+      color: var(--text3) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 3px !important;
+      font-size: 11px !important;
+      padding: 4px 10px !important;
+    }
+    
+    .docsify-copy-code-button:hover {
+      color: var(--cyan) !important;
+      background: rgba(0,212,255,0.08) !important;
+    }
+    
+    .search {
+      border-bottom: 1px solid var(--border) !important;
+      padding: 16px 20px !important;
+      margin-bottom: 0 !important;
+    }
+    
+    .search input {
+      background: var(--s2) !important;
+      border: 1px solid var(--border) !important;
+      color: var(--text) !important;
+      padding: 8px 12px !important;
+      border-radius: 4px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 12px !important;
+      width: 100% !important;
+    }
+    
+    .search input:focus {
+      border-color: var(--cyan) !important;
+      outline: none !important;
+    }
+    
+    .search input::placeholder {
+      color: var(--text3) !important;
+    }
+    
+    .search .results-panel {
+      background: var(--s1) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 4px !important;
+      margin-top: 8px !important;
+    }
+    
+    .search .matching-post {
+      border-bottom: 1px solid var(--border) !important;
+    }
+    
+    .search .matching-post a {
+      color: var(--text) !important;
+      padding: 10px 12px !important;
+      display: block !important;
+    }
+    
+    .search .matching-post a:hover {
+      color: var(--cyan) !important;
+      background: rgba(0,212,255,0.06) !important;
+    }
+    
+    .pagination-item-label {
+      color: var(--text3) !important;
+      font-size: 11px !important;
+      letter-spacing: 1px !important;
+    }
+    
+    .pagination-item-label:hover {
+      color: var(--cyan) !important;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--border2);
+      border-radius: 3px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text3);
+    }
+    
+    @media (max-width: 768px) {
+      .markdown-section {
+        padding: 24px 20px !important;
+      }
+    }
   </style>
 </head>
 <body>
