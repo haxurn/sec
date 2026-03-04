@@ -13,49 +13,49 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     :root {
-      --bg-a: #f8fbff;
-      --bg-b: #eef4fb;
-      --bg-c: #e9f1fb;
-      --ink: #102138;
-      --ink-soft: #4f6787;
-      --muted: #7c92ae;
-      --line: #d6e2f1;
-      --line-strong: #bccfe7;
-      --panel: rgba(255, 255, 255, 0.88);
-      --panel-soft: rgba(255, 255, 255, 0.78);
-      --brand: #1e8a95;
-      --brand-2: #628edd;
-      --code-bg: linear-gradient(180deg, #132338, #101f33);
-      --code-line: #233f62;
-      --code-text: #c8dcf5;
+      --bg-a: #f7f8f5;
+      --bg-b: #eef1eb;
+      --bg-c: #e6ebe4;
+      --ink: #162019;
+      --ink-soft: #45574c;
+      --muted: #6e8377;
+      --line: #d2ddd4;
+      --line-strong: #b9cabf;
+      --panel: rgba(255, 255, 255, 0.9);
+      --panel-soft: rgba(255, 255, 255, 0.8);
+      --brand: #0f766e;
+      --brand-2: #b45309;
+      --code-bg: linear-gradient(180deg, #18241f, #131d19);
+      --code-line: #2c4a3f;
+      --code-text: #d4ece0;
       --radius-xs: 8px;
       --radius-sm: 12px;
       --radius-md: 16px;
       --radius-lg: 20px;
-      --shadow-sm: 0 8px 20px rgba(26, 43, 70, 0.09);
-      --shadow-md: 0 18px 48px rgba(26, 43, 70, 0.15);
-      --focus: 0 0 0 3px rgba(98, 142, 221, 0.28);
+      --shadow-sm: 0 8px 20px rgba(22, 33, 27, 0.09);
+      --shadow-md: 0 18px 48px rgba(22, 33, 27, 0.16);
+      --focus: 0 0 0 3px rgba(15, 118, 110, 0.24);
     }
 
     body[data-theme="dark"] {
-      --bg-a: #0d1420;
-      --bg-b: #111c2b;
-      --bg-c: #0b1420;
-      --ink: #e6f0ff;
-      --ink-soft: #9fb5d4;
-      --muted: #7f97b8;
-      --line: #26384f;
-      --line-strong: #3e5e80;
-      --panel: rgba(13, 22, 35, 0.9);
-      --panel-soft: rgba(15, 26, 41, 0.84);
-      --brand: #73d8de;
-      --brand-2: #8ab4ff;
-      --code-bg: linear-gradient(180deg, #0f1927, #0b1320);
-      --code-line: #2c4463;
-      --code-text: #d7e8ff;
+      --bg-a: #0f1412;
+      --bg-b: #131c18;
+      --bg-c: #0d1512;
+      --ink: #e6efe9;
+      --ink-soft: #9eb3a8;
+      --muted: #7d9488;
+      --line: #283a33;
+      --line-strong: #3c574d;
+      --panel: rgba(13, 21, 18, 0.9);
+      --panel-soft: rgba(16, 27, 23, 0.84);
+      --brand: #34d399;
+      --brand-2: #f59e0b;
+      --code-bg: linear-gradient(180deg, #111c17, #0d1512);
+      --code-line: #315347;
+      --code-text: #d5efe2;
       --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
       --shadow-md: 0 22px 54px rgba(0, 0, 0, 0.44);
-      --focus: 0 0 0 3px rgba(138, 180, 255, 0.25);
+      --focus: 0 0 0 3px rgba(52, 211, 153, 0.24);
     }
 
     * { box-sizing: border-box; }
@@ -70,14 +70,14 @@
       line-height: 1.7;
       letter-spacing: 0.01em;
       background:
-        radial-gradient(1100px 650px at 8% -12%, rgba(98, 142, 221, 0.22), transparent 46%),
-        radial-gradient(920px 560px at 92% 2%, rgba(30, 138, 149, 0.2), transparent 52%),
+        radial-gradient(1100px 650px at 8% -12%, rgba(15, 118, 110, 0.22), transparent 46%),
+        radial-gradient(920px 560px at 92% 2%, rgba(180, 83, 9, 0.18), transparent 52%),
         linear-gradient(180deg, var(--bg-a) 0%, var(--bg-b) 58%, var(--bg-c) 100%) !important;
       transition: background 0.28s ease, color 0.24s ease;
     }
 
     ::selection {
-      background: rgba(98, 142, 221, 0.3);
+      background: rgba(15, 118, 110, 0.3);
       color: var(--ink);
     }
 
@@ -193,7 +193,7 @@
 
     .search .matching-post a:hover {
       color: var(--ink) !important;
-      background: rgba(98, 142, 221, 0.12) !important;
+      background: rgba(15, 118, 110, 0.12) !important;
     }
 
     .sidebar-nav {
@@ -232,14 +232,14 @@
 
     .sidebar-nav a:hover {
       color: var(--ink) !important;
-      background: rgba(98, 142, 221, 0.14) !important;
+      background: rgba(15, 118, 110, 0.14) !important;
       border-color: var(--line);
       transform: translateX(2px);
     }
 
     .sidebar-nav li.active > a {
       color: var(--ink) !important;
-      background: linear-gradient(120deg, rgba(98, 142, 221, 0.24), rgba(30, 138, 149, 0.18)) !important;
+      background: linear-gradient(120deg, rgba(15, 118, 110, 0.24), rgba(180, 83, 9, 0.16)) !important;
       border-color: var(--line-strong);
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
       font-weight: 600 !important;
@@ -339,7 +339,7 @@
       padding: 12px 14px !important;
       border-left: 4px solid var(--brand-2) !important;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
-      background: linear-gradient(90deg, rgba(98, 142, 221, 0.16), rgba(98, 142, 221, 0.04)) !important;
+      background: linear-gradient(90deg, rgba(15, 118, 110, 0.14), rgba(15, 118, 110, 0.04)) !important;
       color: var(--ink-soft) !important;
     }
 
@@ -359,7 +359,7 @@
       border: 1px solid var(--line) !important;
       border-radius: 7px !important;
       padding: 2px 7px !important;
-      background: rgba(98, 142, 221, 0.13) !important;
+      background: rgba(15, 118, 110, 0.12) !important;
       color: var(--brand) !important;
       font-family: 'IBM Plex Mono', monospace !important;
       font-size: 0.9em !important;
@@ -417,7 +417,7 @@
     }
 
     .markdown-section thead th {
-      background: rgba(98, 142, 221, 0.14) !important;
+      background: rgba(15, 118, 110, 0.14) !important;
       color: var(--ink) !important;
       border-bottom: 1px solid var(--line) !important;
       font-family: 'IBM Plex Mono', monospace;
@@ -439,7 +439,7 @@
     }
 
     .markdown-section tbody tr:nth-child(even) {
-      background: rgba(98, 142, 221, 0.06) !important;
+      background: rgba(15, 118, 110, 0.06) !important;
     }
 
     .pagination-item-label {
