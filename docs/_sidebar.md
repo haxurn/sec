@@ -10,4 +10,4 @@
   - [Mobile Pentest Plan](notes/mobile-pentest.md)
 
 - **Resources**
-  - [External Links](#resources)
+  - [External Links](README.md#resources)

@@ -196,7 +196,7 @@
     }
 
     .markdown-section {
-      max-width: 920px !important;
+      max-width: 1000px !important;
       margin: 0 auto 36px !important;
       padding: clamp(24px, 5vw, 44px) clamp(18px, 4vw, 42px) !important;
       border-radius: var(--radius-lg);
@@ -204,6 +204,15 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow-md);
       color: var(--ink) !important;
+    }
+
+    body.route-mobile-pentest .markdown-section {
+      max-width: 1140px !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
     }
 
     .markdown-section h1,
@@ -372,6 +381,11 @@
     (function() {
       var button = document.getElementById('themeToggle');
       var label = document.getElementById('themeLabel');
+      function applyRouteClass() {
+        var h = (location.hash || '').toLowerCase();
+        var isMobilePentest = h.indexOf('notes/mobile-pentest') !== -1;
+        document.body.classList.toggle('route-mobile-pentest', isMobilePentest);
+      }
 
       function paintToggle() {
         var isDark = document.body.getAttribute('data-theme') === 'dark';
@@ -392,11 +406,14 @@
       });
 
       paintToggle();
+      applyRouteClass();
+      window.addEventListener('hashchange', applyRouteClass);
 
       document.addEventListener('DOMContentLoaded', function() {
         if (window.lucide) {
           lucide.createIcons();
         }
+        applyRouteClass();
       });
     })();
   </script>
